@@ -4,7 +4,7 @@
   "description": "Website for family events and planning",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --coverage --forceExit",
     "start": "node index.js && cd client && npm run build",
     "dbon": "mkdir -p ./db && mongod --dbpath ./db"
   },
@@ -29,9 +29,7 @@
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jest": "^21.22.0",
-    "jest": "^23.5.0",
-    "path": "^0.12.7",
-    "superagent": "^3.8.3"
+    "jest": "^23.5.0"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
@@ -39,6 +37,7 @@
     "express": "^4.16.3",
     "http-errors": "^1.7.0",
     "mongoose": "^5.2.10",
+    "superagent": "^3.8.3",
     "winston": "^3.0.0"
   }
 }
