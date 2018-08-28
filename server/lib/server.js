@@ -2,33 +2,30 @@
 
 import express from 'express';
 import mongoose from 'mongoose';
+
 import logger from './logger';
 import loggerMiddleware from './logger-middleware';
 import errorMiddleware from './error-middleware';
-
-// const path = require('path');
-
-console.log('testing');
+import commentRouter from '../routes/comment-router';
 
 const app = express();
 let server = null;
+require('dotenv').config();
 
 // ... other app.use middleware setups
-app.use(express.static(`${__dirname}/../../client/build`));
-
 app.use(loggerMiddleware);
+app.use(express.static(`${__dirname}/../../client/build`));
+app.use('/api', commentRouter);
+app.use(errorMiddleware);
 
-// ...
 // Right before your app.listen(), add this:
 app.get('*', (req, res) => {
   res.sendFile(`${__dirname}/../../client/build/index.html`);
 });
-
-app.use(errorMiddleware);
-
+// -----
 
 const startServer = () => {
-  return mongoose.connect(process.env.MONGODB_URI)
+  return mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true })
     .then(() => {
       server = app.listen(process.env.PORT, () => {
         logger.log(logger.INFO, `SERVER IS LISTENING ON PORT ${process.env.PORT}`);
