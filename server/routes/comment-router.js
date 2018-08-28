@@ -29,6 +29,17 @@ commentRouter.get('/comments', (req, res, next) => {
     .catch(next);
 });
 
+commentRouter.get('/comments/completed', (req, res, next) => {
+  return Comment.find({ completed: true })
+    .then((comments) => {
+      if (!comments) {
+        return next(new HttpError(400, 'COMMENT GET COMPLETED - error fetching comments'));
+      }
+      return res.json(comments);
+    })
+    .catch(next);
+});
+
 commentRouter.put('/comments/:id', jsonParser, (req, res, next) => {
   const options = { returnNewDocument: true };
   return Comment.findOneAndUpdate({ _id: req.params.id }, req.body, options)
