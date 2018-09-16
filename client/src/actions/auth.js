@@ -13,12 +13,12 @@ const removeToken = () => ({
 });
 
 const logout = () => {
+  location.reload(); // eslint-disable-line
   deleteCookie(TOKEN_COOKIE_KEY);
   return removeToken();
 };
 
 const loginRequest = password => (store) => {
-  // const API_URL = 'http://localhost:8000';
   return superagent.post(`/api${routes.LOGIN}`)
     .send({ password })
     .then((response) => {

@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import routes from '../../utils/routes';
+import { logout } from '../../actions/auth';
+
+import './header.css';
 
 const Header = () => (
   <header className="app-header">
@@ -8,7 +11,7 @@ const Header = () => (
     <nav>
       <Link to={routes.HOME}><li>Home</li></Link>
       <Link to={routes.CALENDAR}><li>Calendar</li></Link>
-      <li>Log out</li>
+      <Link to={routes.LOGOUT}><li onClick={logout}>Log out</li></Link>
     </nav>
   </header>
 );

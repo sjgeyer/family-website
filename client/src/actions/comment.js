@@ -21,7 +21,7 @@ const deleteComment = comment => ({
 });
 
 const postCommentRequest = comment => (store) => {
-  return superagent.post(`${API_URL}/api/comments`)
+  return superagent.post('/api/comments')
     .send(comment)
     .then((response) => {
       return store.dispatch(postComment(response.body));
@@ -29,7 +29,7 @@ const postCommentRequest = comment => (store) => {
 };
 
 const updateCommentRequest = comment => (store) => {
-  return superagent.put(`${API_URL}/api/comments/${comment._id}`)
+  return superagent.put(`/api/comments/${comment._id}`)
     .send(comment)
     .then((response) => {
       return store.dispatch(updateComment(response.body));
@@ -37,21 +37,21 @@ const updateCommentRequest = comment => (store) => {
 };
 
 const getCommentsRequest = () => (store) => {
-  return superagent.get(`${API_URL}/api/comments`)
+  return superagent.get('/api/comments')
     .then((response) => {
       return store.dispatch(getComments(response.body));
     });
 };
 
 const getCompletedCommentsRequest = () => (store) => {
-  return superagent.get(`${API_URL}/api/comments/completed`)
+  return superagent.get('/api/comments/completed')
     .then((response) => {
       return store.dispatch(getComments(response.body));
     });
 };
 
 const deleteCommentRequest = comment => (store) => {
-  return superagent.del(`${API_URL}/api/comments/${comment._id}`)
+  return superagent.del(`/api/comments/${comment._id}`)
     .then(() => {
       return store.dispatch(deleteComment(comment));
     });

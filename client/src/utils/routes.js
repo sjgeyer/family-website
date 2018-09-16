@@ -3,4 +3,5 @@ export default {
   HOME: '/home',
   CALENDAR: '/calendar',
   LOGIN: '/login',
+  LOGOUT: '/logout',
 };
