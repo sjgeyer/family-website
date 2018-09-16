@@ -5,21 +5,21 @@ import routes from '../../utils/routes';
 
 class AuthRedirect extends React.Component {
   render() {
-    const { location, token } = this.props;
+    const { location, loggedIn } = this.props;
     const { pathname } = location;
 
     let destinationRoute = null;
 
-    if (!token) {
+    if (!loggedIn) {
       destinationRoute = routes.LANDING;
     }
 
     switch (pathname) {
       case routes.LANDING:
-        if (token) destinationRoute = routes.HOME;
+        if (loggedIn) destinationRoute = routes.HOME;
         break;
       case routes.CALENDAR:
-        if (token) destinationRoute = routes.CALENDAR;
+        if (loggedIn) destinationRoute = routes.CALENDAR;
         else destinationRoute;
       default:
     }
@@ -32,12 +32,12 @@ class AuthRedirect extends React.Component {
 }
 
 AuthRedirect.propTypes = {
-  token: PropTypes.bool,
+  loggedIn: PropTypes.bool,
   location: PropTypes.object,
 };
 
 const mapStateToProps = state => ({
-  token: !!state.token,
+  loggedIn: !!state.token,
 });
 
-export default connect()(AuthRedirect);
+export default connect(mapStateToProps)(AuthRedirect);

@@ -16,24 +16,23 @@ class LoginForm extends React.Component {
   }
 
   handleSubmit(e) {
-
+    e.preventDefault();
+    this.props.onComplete(this.state.password);
+    this.setState({ password: '' });
   }
 
   render() {
     return (
-      <React.Fragment>
-        <h2>Please enter the password</h2>
-        <form className='login-form' onSubmit={this.handleSubmit}>
-          <input
-            name='password'
-            placeholder='Enter password...'
-            type='password'
-            value={this.state.password}
-            onChange={this.handleChange}
-          />
-          <button type='submit'>Submit</button>
-        </form>
-      </React.Fragment>
+      <form className='login-form' onSubmit={this.handleSubmit}>
+        <input
+          name='password'
+          placeholder='Enter password...'
+          type='password'
+          value={this.state.password}
+          onChange={this.handleChange}
+        />
+        <button type='submit'>Submit</button>
+      </form>
     );
   }
 }

@@ -4,7 +4,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Header from './header/Header.jsx';
 import AuthRedirect from './auth-redirect/AuthRedirect.jsx';
 import Home from './home/Home.jsx';
-import LoginForm from './login-form/LoginForm.jsx';
+import Landing from './landing/Landing.jsx';
 
 import '../App.css';
 
@@ -16,7 +16,7 @@ class App extends Component {
           <React.Fragment>
             <Header/>
             <Route path='*' component={AuthRedirect}/>
-            <Route exact path='/' component={LoginForm}/>
+            <Route exact path='/' component={Landing}/>
             <Route exact path='/home' component={Home}/>
             {/* <Route exact path='/calendar' component={}/> */}
           </React.Fragment>

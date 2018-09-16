@@ -24,8 +24,8 @@ const postCommentRequest = comment => (store) => {
   return superagent.post(`${API_URL}/api/comments`)
     .send(comment)
     .then((response) => {
-      return store.dispatch(postComment(response.body))
-    })
+      return store.dispatch(postComment(response.body));
+    });
 };
 
 const updateCommentRequest = comment => (store) => {
@@ -53,8 +53,8 @@ const getCompletedCommentsRequest = () => (store) => {
 const deleteCommentRequest = comment => (store) => {
   return superagent.del(`${API_URL}/api/comments/${comment._id}`)
     .then(() => {
-      return store.dispatch(deleteComment(comment))
-    })
+      return store.dispatch(deleteComment(comment));
+    });
 };
 
 export default {
@@ -63,4 +63,4 @@ export default {
   getCommentsRequest,
   getCompletedCommentsRequest,
   deleteCommentRequest,
-}
+};
