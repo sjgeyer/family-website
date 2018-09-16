@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import routes from '../../utils/routes';
 
@@ -12,20 +13,13 @@ class AuthRedirect extends React.Component {
 
     if (!loggedIn) {
       destinationRoute = routes.LANDING;
-    }
-
-    switch (pathname) {
-      case routes.LANDING:
-        if (loggedIn) destinationRoute = routes.HOME;
-        break;
-      case routes.CALENDAR:
-        if (loggedIn) destinationRoute = routes.CALENDAR;
-        else destinationRoute;
-      default:
+    } else if (pathname === routes.LANDING) {
+      destinationRoute = routes.HOME;
     }
 
     return (
       <React.Fragment>
+        { destinationRoute && <Redirect to={destinationRoute}/>}
       </React.Fragment>
     );
   }
