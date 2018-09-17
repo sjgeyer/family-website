@@ -7,6 +7,7 @@ import logger from './logger';
 import loggerMiddleware from './logger-middleware';
 import errorMiddleware from './error-middleware';
 import commentRouter from '../routes/comment-router';
+import authRouter from '../routes/auth-router';
 
 const app = express();
 let server = null;
@@ -16,6 +17,7 @@ require('dotenv').config();
 app.use(loggerMiddleware);
 app.use(express.static(`${__dirname}/../../client/build`));
 app.use('/api', commentRouter);
+app.use('/api', authRouter);
 app.use(errorMiddleware);
 
 // Right before your app.listen(), add this:
