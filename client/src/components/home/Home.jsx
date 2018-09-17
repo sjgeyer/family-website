@@ -7,7 +7,7 @@ import commentActions from '../../actions/comment';
 import autobind from '../../utils/autobind';
 
 import CommentForm from '../comment-form/CommentForm.jsx';
-import Comment from '../comment/Comment';
+import Comment from '../comment/Comment.jsx';
 
 class Home extends React.Component {
   constructor(props) {
@@ -19,11 +19,11 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    // try {
+    try {
       this.props.getComments();
-    // } catch (err) {
-    //   this.handleError();
-    // }
+    } catch (err) {
+      this.handleError();
+    }
   }
 
   handleError() {
