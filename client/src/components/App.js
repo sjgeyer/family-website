@@ -24,6 +24,7 @@ class App extends Component {
             <Route exact path={routes.LANDING} component={Landing}/>
             <Route exact path={routes.HOME} component={Home}/>
             <Route exact path={routes.LOGOUT} component={Loading}/>
+            <Route exact path={routes.COMPLETED_COMMENTS} component={Loading}/>
             {/* <Route exact path='/calendar' component={}/> */}
           </React.Fragment>
         </BrowserRouter>
